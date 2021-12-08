@@ -103,3 +103,79 @@
 # opener = urllib.request.build_opener(handler)
 # response = opener.open('https://www.baidu.com')
 # print(response.read().decode('utf-8'))
+
+
+# from urllib import request, error
+
+# try:
+#     response = request.urlopen("https://cuiqingcai.com/404_not")
+# except error.URLError as e:
+#     print(e.reason)
+
+
+# from urllib import request, error
+
+# try:
+#     response = request.urlopen("https://cuiqingcai.com/404")
+# except error.HTTPError as e:
+#     print(e.reason, e.code, e.headers, sep='\n')
+# except error.URLError as e:
+#     print(e.reason)
+# else:
+#     print('Request Successfully')
+
+
+# from urllib import request, error
+# import socket
+
+# try:
+#     response = request.urlopen('https://www.baidu.com', timeout=0.01)
+# except error.URLError as e:
+#     print(type(e.reason))
+#     if isinstance(e.reason, socket.timeout):
+#         print('TIME OUT')
+
+
+# from urllib.parse import urlparse
+
+# result = urlparse('https://www.baidu.com/index.html;user?id=5#comment', 'http', allow_fragments=True)
+# print(type(result))
+# print(result, result.scheme, result.netloc, sep='\n')
+
+
+# from urllib.parse import urlunparse
+
+# data = ['https', 'www.baidu.com', 'index.html', 'user', 'a=6', 'comment']
+# print(urlunparse(data))
+
+
+# from urllib.parse import urljoin
+
+# print(urljoin('https://www.baidu.com', 'FAQ.html'))
+# print(urljoin('https://www.baidu.com', 'https://cuiqingcai.com/FAQ.html'))
+# print(urljoin('https://www.baidu.com#comment', '?category=2'))
+
+
+# from urllib.parse import urlencode, parse_qs, quote, unquote
+
+# params = {
+#     'name': 'germy',
+#     'age': 25
+# }
+# base_url = 'https://www.baidu.com'
+# url = base_url + urlencode(params)
+# print(url)
+# print(parse_qs('name=germy&age=25'))
+# url = 'https://www.baidu.com/s?wd=' + quote('你好')
+# print(url)
+# print(unquote(url))
+
+
+# from urllib.robotparser import RobotFileParser
+
+# rp = RobotFileParser()
+# rp.set_url('https://www.baidu.com/robots.txt')
+# rp.read()
+# print(rp.can_fetch('Baiduspider', 'https://www.baidu.com'))
+# print(rp.can_fetch('Baiduspider', 'https://www.baidu.com/homepage/'))
+# print(rp.can_fetch('Googlebot', 'https://www.baidu.com/homepage/'))
